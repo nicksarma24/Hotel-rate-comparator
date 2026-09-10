@@ -4,6 +4,13 @@ Searches two mock hotel suppliers in parallel via a Temporal workflow, and
 returns the single cheapest rate. Frontend is React/Vite; backend is
 Node/TypeScript + Temporal.
 
+
+# Output screenshots
+<img width="744" height="377" alt="image" src="https://github.com/user-attachments/assets/f1210330-389c-4aa3-a55c-740044c31abf" />
+<img width="613" height="421" alt="image" src="https://github.com/user-attachments/assets/2e8cc84d-1532-4ce0-b6a1-80c915e43d05" />
+
+
+
 ## Prerequisites
 
 - Node.js 18+ and npm
