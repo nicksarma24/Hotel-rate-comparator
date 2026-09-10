@@ -1,0 +1,35 @@
+name: CI
+
+# Runs the same checks as verify.sh, but on GitHub's own runners — which
+# have real network access (this repo was assembled in a sandboxed
+# environment without npm registry access, so this workflow is the first
+# place the project is actually installed and executed end-to-end).
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check backend
+        run: npm run lint --workspace backend
+
+      - name: Build frontend (type-checks + bundles)
+        run: npm run build --workspace frontend
+
+      - name: Run backend tests (unit + Temporal workflow scenarios)
+        run: npm test --workspace backend

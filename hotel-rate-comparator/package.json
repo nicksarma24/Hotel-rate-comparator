@@ -1,0 +1,12 @@
+{
+  "name": "hotel-rate-comparator",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "test": "npm run test --workspace backend"
+  }
+}
